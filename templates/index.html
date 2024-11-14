@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinkers GPT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 80vh; /* Adjusted height to allow scrolling */
+            overflow: hidden; /* Prevents overflow outside the container */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            flex: 0 0 auto; /* Ensures form doesn't take more space than necessary */
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #2898a7;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2883a7;
+        }
+        .response-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            flex: 1 1 auto; /* Allows the container to grow and take available space */
+            overflow-y: auto; /* Enables vertical scrolling */
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap; /* Ensures text wraps within the pre element */
+            word-wrap: break-word;  /* Break long words to fit within the pre element */
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Thinkers GPT</h1>
+        <form method="POST">
+            <textarea name="user_input" placeholder="Enter your input here..."></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="response-container">
+            {% if user_input %}
+                <h2>Question:</h2>
+                <pre>{{ user_input }}</pre>
+            {% endif %}
+            {% if response %}
+                <h2>Response:</h2>
+                <pre>{{ response }}</pre>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
